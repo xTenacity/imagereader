@@ -1,9 +1,17 @@
+/*
 //Put this in the main method
-//painter.drawImage("#000000", "#327294", "#943232");
-
-//put this in the ImagePainter file
 import org.code.neighborhood.*;
-public class ImagePainter extends PainterPlus {//initialize the ImagePainter class
+public class NeighborhoodRunner {
+    public static void main(String[] args) {
+        ImagePainter painter = new ImagePainter();
+        painter.drawImage("#000000", "#327294", "#943232");
+    }
+}
+*/
+
+// Put this in the ImagePainter file
+import org.code.neighborhood.*;
+public class ImagePainter extends PainterPlus {// initialize the ImagePainter class
     public void drawImage(String color0, String color1, String color2) {
         drawColor0(color0);
         drawColor1(color1);
@@ -11,118 +19,117 @@ public class ImagePainter extends PainterPlus {//initialize the ImagePainter cla
     }
 
     public void drawColor0(String color) {
-        //no moveToStart function because the initial position is at 0, 0
-        paintLine(color, 12);
-        nextLayer();
-        paintLine(color, 12);
-        nextLayer();
-        paintLine(color, 12);
-        nextLayer();
-        paintLine(color, 3);
-        move(7);
-        paintLine(color, 3);
-        nextLayer();
-        paintLine(color, 2);
-        move(3);
-        paintLine(color, 4);
-        move(3);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(2);
-        paintLine(color, 2);
-        move(3);
-        paintLine(color, 2);
-        move(2);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(2);
-        paintLine(color, 1);
-        move(5);
-        paintLine(color, 1);
-        move(2);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(2);
-        paintLine(color, 6);
-        move(2);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(9);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(9);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(9);
-        paintLine(color, 2);
-        nextLayer();
-        paintLine(color, 2);
-        move(9);
-        paintLine(color, 2);
-    home();
+        // no moveToStart function because the initial position is at 0, 0
+            paintLine(color, 12);
+            nextLayer();                        //hi
+            paintLine(color, 12);
+            nextLayer();                        //hi
+            paintLine(color, 12);
+            nextLayer();                        //hi
+            paintLine(color, 3);
+            move(5);
+            paintLine(color, 4);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(1);
+            paintLine(color, 5);
+            move(1);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(0);
+            paintLine(color, 3);
+            move(1);
+            paintLine(color, 3);
+            move(0);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(0);
+            paintLine(color, 2);
+            move(3);
+            paintLine(color, 2);
+            move(0);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(0);
+            paintLine(color, 7);
+            move(0);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(7);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(7);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(7);
+            paintLine(color, 3);
+            nextLayer();                        //hi
+            paintLine(color, 2);
+            move(7);
+            paintLine(color, 3);
+        home();
     }
     public void drawColor1(String color) {
         moveToStart("1");
-        move(2);
-        paintLine(color, 2);
-        move(1);
-        nextLayer();
-        move(4);
-    home();
+            move(0);
+            paintLine(color, 3);
+            move(1);
+            nextLayer();                        //hi
+            move(4);
+        home();
     }
     public void drawColor2(String color) {
         moveToStart("2");
-        move(2);
-        paintLine(color, 6);
-        move(1);
-        nextLayer();
-        move(3);
-        paintLine(color, 2);
-        move(4);
-        nextLayer();
-        paintLine(color, 1);
-        move(7);
-        paintLine(color, 1);
-        nextLayer();
-        move(3);
-        paintLine(color, 1);
-        move(5);
-        nextLayer();
-        paintLine(color, 1);
-        move(7);
-        paintLine(color, 1);
-        nextLayer();
-        move(3);
-        paintLine(color, 6);
-        nextLayer();
-        paintLine(color, 8);
-        nextLayer();
-        move(3);
-        paintLine(color, 6);
-        nextLayer();
-        paintLine(color, 8);
-    home();
+            move(0);
+            paintLine(color, 7);
+            move(1);
+            nextLayer();                        //hi
+            move(1);
+            paintLine(color, 3);
+            move(4);
+            nextLayer();                        //hi
+            paintLine(color, 1);
+            move(5);
+            paintLine(color, 2);
+            nextLayer();                        //hi
+            move(1);
+            paintLine(color, 2);
+            move(5);
+            nextLayer();                        //hi
+            paintLine(color, 1);
+            move(5);
+            paintLine(color, 2);
+            nextLayer();                        //hi
+            move(1);
+            paintLine(color, 7);
+            nextLayer();                        //hi
+            paintLine(color, 8);
+            nextLayer();                        //hi
+            move(1);
+            paintLine(color, 7);
+            nextLayer();                        //hi
+            paintLine(color, 8);
+        home();
     }
     public void moveToStart(String part) {
+        int movex = 0, movey = 0;
         if (part.equals("1")) {
-            move(3);
-            turnRight();
-            move(5);
-            turnLeft();
+            movex = 3;
+            movey = 5;
+        } else if (part.equals("2")) {
+            movex = 1;
+            movey = 3;
         }
- else if (part.equals("2")) {
-            move(1);
-            turnRight();
-            move(3);
-            turnLeft();
-        }
-
+        move(movex);
+        turnRight();
+        move(movey);
+        turnLeft();
     }
 }
 

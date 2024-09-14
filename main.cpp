@@ -2,11 +2,23 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <iomanip>  // For hex formatting
-#include <sstream>  // For string streams
-#include <map>      // For storing color-position mappings
+#include <iomanip>  // hex formatting
+#include <sstream>
+#include <map>
 
-// Function to convert RGB to Hex string, taken from chatgpt lol
+// CREATE X,Y PAIRS
+struct vector2 { 
+    int x, y;
+};
+
+// GLOBALS
+std::string classname;
+std::string imagefile;
+std::string output;
+std::ofstream outFile;
+std::map<std::string, std::vector<vector2>> colorMap;
+
+// RGB TO HEX STRING
 std::string rgbToHex(int r, int g, int b) {
     std::stringstream ss;
     ss << std::hex << std::setfill('0') << std::setw(2) << (r & 0xFF) 
@@ -14,32 +26,16 @@ std::string rgbToHex(int r, int g, int b) {
        << std::setw(2) << (b & 0xFF);
     return ss.str();
 }
-
-struct vector2 { // For x,y values
-    int x, y;
-};
-
-int main() {
-
-    std::string classname = "ImagePainter";
-    std::string imagefile = "images/amogus.png";
-
-
-
-
-
-
-
-    cv::Mat image = cv::imread(imagefile, cv::IMREAD_COLOR); //open image
-    if (image.empty()) { //if there's no image, then return an error
+// CREATE THE COLOR MAPPING
+std::map<std::string, std::vector<vector2>> createColorMap() {
+    cv::Mat image = cv::imread(imagefile, cv::IMREAD_COLOR); // open image
+    if (image.empty()) { // if there's no image, then return an error
         std::cerr << "Could not open or find the image" << std::endl;
-        return -1;
+        exit(1); // Exit with error code
     }
-
-    std::ofstream outFile("output.txt"); // Opens and clears output file
-    if (!outFile) { //if no output file return error
+    if (!outFile) {
         std::cerr << "Error opening output.txt" << std::endl;
-        return -1;
+        exit(1); // Exit with error code
     }
 
     // Map to store hex colors and their corresponding positions
@@ -47,7 +43,7 @@ int main() {
 
     for (int y = 0; y < image.rows; y++) {
         for (int x = 0; x < image.cols; x++) {
-            cv::Vec3b pixel = image.at<cv::Vec3b>(y, x); //get the pixel
+            cv::Vec3b pixel = image.at<cv::Vec3b>(y, x); // get the pixel
             std::string hexColor = rgbToHex(pixel[2], pixel[1], pixel[0]); // Convert RGB to hex
 
             // Create position struct
@@ -63,23 +59,21 @@ int main() {
             }
         }
     }
-
-
-
-
-
-
-
-
-    //PRINT TO OUTPUT.TXT
-
-    //for the main method
-    outFile << "//Put this in the main method\n//painter.drawImage(\"";
+    return colorMap;
+}
+// CREATE THE MAIN METHOD
+void createMain() {
+    outFile << "/*\n//Put this in the main method\n";
+    outFile << "import org.code.neighborhood.*;\n";
+    outFile << "public class NeighborhoodRunner {\n";
+    outFile << "    public static void main(String[] args) {\n";
+    outFile << "        ImagePainter painter = new ImagePainter();\n";
+    outFile << "        painter.drawImage(\"";
     int i = 0;
     for (const auto& pair : colorMap) {
         outFile << "#" << pair.first;
         
-        //commas on everything but the end
+        // Commas on everything but the end
         if (i == colorMap.size() - 1) {
             outFile << "\"";
         } else {
@@ -87,12 +81,17 @@ int main() {
         }
         i++;
     }
-    outFile << ");\n\n";
-
-    //beginning of the ImagePainter class file
-    outFile << "//put this in the " << classname << " file\nimport org.code.neighborhood.*;\npublic class " << classname << " extends PainterPlus {//initialize the ImagePainter class\n";
-
-    //beginning of the first function
+    outFile << ");\n";
+    outFile << "    }\n}\n*/\n\n";
+}
+//CREATE THE INITIAL DRAW IMAGE FUNCTION
+void createClass() {
+    outFile << "// Put this in the " << classname << " file\n";
+    outFile << "import org.code.neighborhood.*;\n";
+    outFile << "public class " << classname << " extends PainterPlus {// initialize the ImagePainter class\n";
+}
+//CREATE THE INITIAL DRAW IMAGE FUNCTION
+void createInitFunction() {
     outFile << "    public void drawImage(";
     for (int i = 0; i < colorMap.size(); i++) {
         if (i == colorMap.size() - 1) {
@@ -102,143 +101,127 @@ int main() {
         }
     }
     outFile << ") {\n";
-    
-    //Write the contents of the first function
+    // Write the contents of the drawImage function
     for (int i = 0; i < colorMap.size(); i++) {
         outFile << "        drawColor" << i << "(color" << i << ");\n";
     }
     outFile << "    }\n\n";
-
-
-
-
-
-
-
-    //for each color
-    std::vector<std::string> hexcodes; //grab hexcodes
+}
+// GRAB HEXCODES OF ALL COLORS AND PUT IN A VECTOR
+std::vector<std::string> grabHex() {
+    std::vector<std::string> hexcodes;
     for (const auto& pair : colorMap) {
         hexcodes.push_back(pair.first);
     }
-    std::vector<vector2> beginlist = {}; //for the initial position setter latter
-    for (int i = 0; i < colorMap.size(); i++) {
+    return hexcodes;
+}
+// CREATE ONE DRAW FUNCTION AT POS "i"
+void createDraw(const std::vector<std::string>& hexcodes, std::vector<vector2>& beginlist, int i) {
+    //get the top left and bottom right positions of a "rectangle"
+    //this is to make it so we iterate over less
+    vector2 begin; // top left
+    vector2 end; // bottom right
 
-        //put the area into a rectangle
-        vector2 begin; //top left
-        vector2 end; //bottom right
-    
-        std::vector<vector2>& positions = colorMap[hexcodes[i]];
-        std::vector<int> tempx = {};
-        std::vector<int> tempy = {};
-        for (int i = 0; i < positions.size(); i++) {
-            tempx.push_back(positions[i].x);
-            tempy.push_back(positions[i].y);
-        }
-        begin.x = *min_element(tempx.begin(), tempx.end());
-        begin.y = *min_element(tempy.begin(), tempy.end());
-        beginlist.push_back(begin);
-        end.x = *max_element(tempx.begin(), tempx.end());
-        end.y = *max_element(tempy.begin(), tempy.end());
+    //Positions stores all of the positions of pixels with the current hex code
+    std::vector<vector2>& positions = colorMap.at(hexcodes[i]);
 
-        std::cout << "(" << begin.x << ", " << begin.y << "), (" << end.x << ", " << end.y << ")" << std::endl;
-        std::cout << "height: " << (end.y - begin.y + 1) << ", width: " << (end.x - begin.x + 1) << std::endl;
-        //now we have the two positions we will travel through (top left and bottom right)
-        
+    //tempx and tempy store all of the x and y values of all positions stored earlier.
+    std::vector<int> tempx, tempy;
+    for (const auto& pos : positions) {
+        tempx.push_back(pos.x);
+        tempy.push_back(pos.y);
+    }
+    //now, we find the top corner by finding the minimum element for both, and bottom corner by finding the maximum element for both
+    begin.x = *std::min_element(tempx.begin(), tempx.end());
+    begin.y = *std::min_element(tempy.begin(), tempy.end());
+    end.x = *std::max_element(tempx.begin(), tempx.end());
+    end.y = *std::max_element(tempy.begin(), tempy.end());
+    //push back where the draw command starts
+    beginlist.push_back(begin);
 
-        outFile << "    public void drawColor" << i << "(String color) {\n";
-        if (beginlist[i].x > 0 && beginlist[i].y > 0) {
-            outFile << "        moveToStart(\"" << i << "\");\n";
-        } else {
-            outFile << "        //no moveToStart function because the initial position is at 0, 0\n";
-        }
 
-        int height = end.y - begin.y + 1;
-        int width = end.x - begin.x + 1;
-        //std::cout << "height: " << height << ", width: " << width << std::endl;
-
+    //start typing out the actual function
+    outFile << "    public void drawColor" << i << "(String color) {\n";
+    if (begin.x > 0 && begin.y > 0) {
+        outFile << "        moveToStart(\"" << i << "\");\n";
+    } else {
+        outFile << "        // no moveToStart function because the initial position is at 0, 0\n";
+    }
 
 
 
 
 
 
+    //height and width of the rectangle are set here
+    int height = end.y - begin.y + 1;
+    int width = end.x - begin.x + 1;
 
+    //for the height of the board
+    for (int j = 0; j < height; j++) {
+        std::vector<int> row(width, 0); // Initialize row with all 0
 
-
-        for (int j = 0; j < height; j++) {
-            std::vector<int> row(width, 0); // Initialize the row with all 0s
-
-            // Set the appropriate positions to 1
-        
-            for (int u = 0; u < tempy.size(); u++) {
-                if (tempy[u] == begin.y + j) {
-                    if (j % 2 == 0) {
-                        // Left to Right
-                        int index = tempx[u] - begin.x;
-                        if (index >= 0 && index < width) {
-                            row[index] = 1; // Set the position to 1
-                        }
-                    } else {
-                        // Right to Left
-                        int index = end.x - tempx[u] + begin.x;
-                        if (index >= 0 && index < width) {
-                            row[index] = 1; // Set the position to 1
-                        }
-                    }
+        // Set positions that are colored to 1
+        for (size_t u = 0; u < tempy.size(); u++) {
+            if (tempy[u] == begin.y + j) {
+                int index;
+                if (j % 2 == 0) {
+                    // Left to Right
+                    index = tempx[u] - begin.x;
+                } else {
+                    // Right to Left
+                    index = end.x - tempx[u] + begin.x;
+                }
+                if (index >= 0 && index < width) {
+                    row[index] = 1; // Set the position to 1
                 }
             }
-            for (int u = 0; u < row.size(); u++) {
-                std::cout << row[i];
-            }
-            std::cout << "\n";
+        }
 
-            // Process the row to generate commands
-            int count = 0;
-            bool moving = row[0] == 1; // Set moving to false if the first pixel is 1, otherwise true
 
-            for (int u = 0; u < row.size(); u++) {
-                if (row[u] == 1) { // If there's a pixel to be painted
-                    if (moving) {
-                        // If moving, we should have been moving, so print the move command
-                        if (count > 0) {
-                            if (j == 0) {
-                                outFile << "        move(" << count+1 << ");\n";
-                            } else {
-                                outFile << "        move(" << count+1 << ");\n";
-                            }
-                            count = 0;
-                        }
-                        moving = false; // Now we are painting
+
+
+
+        bool painting = false;
+        int counter = 0;
+        for (int u = 0; u < row.size(); u++) {
+            if (row[u] == 1) {
+                if (painting) {
+                    counter++;
+                } else {
+                    painting = true;
+                    if (counter > 0) {
+                        outFile << "            move(" << counter - 1 << ");\n";
+                        counter = 1;
                     }
-                    count++;
-                } else { // If the current pixel is 0
-                    if (!moving) {
-                        // If not moving, we should be painting, so print the paint command
-                        if (count > 0) {
-                            outFile << "        paintLine(color, " << count << ");\n";
-                            count = 0;
-                        }
-                        moving = true; // Now we are moving
-                    }
-                    count++;
+                }
+            } else {
+                if (painting) {
+                    painting = false;
+                    outFile << "            paintLine(color, " << counter + 1 << ");\n";
+                    counter = 1;
+                } else {
+                    counter++;
                 }
             }
-
-            // Handle the case where the last sequence ends at the end of the row
-            if (!moving && count > 0) {
-                outFile << "        paintLine(color, " << count << ");\n";
-            } else if (moving && count > 0) {
-                outFile << "        move(" << count << ");\n";
-            }
-
-
-
-            
-            if (j < height - 1) {
-                outFile << "        nextLayer();\n"; // Move to the next row (y-axis)
-            }
         }
-        outFile << "    home();\n    }\n";
+
+        // Handle the final segment
+        if (painting) {
+            outFile << "            paintLine(color, " << counter + 1 << ");\n";
+        } else if (counter > 0) {
+            outFile << "            move(" << counter << ");\n";
+        }
+
+
+
+
+
+
+
+        if (j < height - 1) {
+            outFile << "            nextLayer();                        //hi\n"; // Move to the next row (y-axis)
+        }
     }
 
 
@@ -254,15 +237,21 @@ int main() {
 
 
 
-
-
-
-
-
-
-
-    //moveToStart command
+    outFile << "        home();\n    }\n";
+}
+// CREATE THE DRAW FUNCTIONS
+std::vector<vector2> createDrawFunctions() {
+    std::vector<std::string> hexcodes = grabHex();
+    std::vector<vector2> beginlist;
+    for (int i = 0; i < colorMap.size(); i++) {
+        createDraw(hexcodes, beginlist, i);
+    }
+    return beginlist;
+}
+// CREATE MOVETOSTART FUNCTION
+void createMoveToStart(const std::vector<vector2>& beginlist) {
     outFile << "    public void moveToStart(String part) {\n";
+    outFile << "        int movex = 0, movey = 0;\n";
     bool first = true;
     for (int i = 0; i < colorMap.size(); i++) {
         if (beginlist[i].x > 0 && beginlist[i].y > 0) {
@@ -273,23 +262,38 @@ int main() {
                 outFile << " else if (part.equals(\"" << i << "\")) {\n";
             }
             if (beginlist[i].x > 0) {
-                outFile << "            move(" << beginlist[i].x-1 << ");\n";
+                outFile << "            movex = " << (beginlist[i].x - 1) << ";\n";
             }
-            outFile << "            turnRight();\n";
             if (beginlist[i].y > 0) {
-                outFile << "            move(" << beginlist[i].y << ");\n";
+                outFile << "            movey = " << beginlist[i].y << ";\n";
             }
-            outFile << "            turnLeft();\n";
-            outFile << "        }\n";
+            outFile << "        }";
         }
     }
-    outFile << "\n    }\n}\n\n\n\n";
-    
+    outFile << "\n        move(movex);\n";
+    outFile << "        turnRight();\n";
+    outFile << "        move(movey);\n";
+    outFile << "        turnLeft();\n";
+    outFile << "    }\n}\n\n\n\n";
+}
+// CREATE THE IMAGEPAINTER FILE
+void createImagePainter() {
+    createClass();
+    createInitFunction();
+    std::vector<vector2> beginlist = createDrawFunctions();
+    createMoveToStart(beginlist);
+}
+
+int main() {
+    classname = "ImagePainter";
+    imagefile = "images/amogus.png";
+    output = "output.txt";
+    outFile.open(output);
+    colorMap = createColorMap();
+
+    createMain();
+    createImagePainter();
+
     outFile.close();
     return 0;
 }
-/*
-g++ -o output main.cpp `pkg-config --cflags --libs opencv4`
-./output
-
-*/
