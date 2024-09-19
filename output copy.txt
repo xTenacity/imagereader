@@ -1,0 +1,139 @@
+/*
+//Put this in the main method
+import org.code.neighborhood.*;
+public class NeighborhoodRunner {
+    public static void main(String[] args) {
+        ImagePainter painter = new ImagePainter();
+        painter.drawImage("#000000", "#327294", "#943232");
+    }
+}
+*/
+
+// Put this in the ImagePainter file
+import org.code.neighborhood.*;
+public class ImagePainter extends PainterPlus {// initialize the ImagePainter class
+    public void drawImage(String color0, String color1, String color2) {
+        drawColor0(color0);
+        drawColor1(color1);
+        drawColor2(color2);
+    }
+
+    public void drawColor0(String color) {
+        // no moveToStart function because the initial position is at 0, 0
+            paintLine(color, 11);
+            nextLayer(true, color);                //row 1
+            paintLine(color, 11);
+            nextLayer(true, color);                //row 2
+            paintLine(color, 11);
+            nextLayer(true, color);                //row 3
+            paintLine(color, 3);
+            move(6);
+            paintLine(color, 2);
+            nextLayer(true, color);                //row 4
+            paintLine(color, 2);
+            move(2);
+            paintLine(color, 4);
+            move(2);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 5
+            paintLine(color, 2);
+            move(1);
+            paintLine(color, 2);
+            move(2);
+            paintLine(color, 2);
+            move(1);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 6
+            paintLine(color, 2);
+            move(1);
+            paintLine(color, 1);
+            move(4);
+            paintLine(color, 1);
+            move(1);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 7
+            paintLine(color, 2);
+            move(1);
+            paintLine(color, 6);
+            move(1);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 8
+            paintLine(color, 2);
+            move(8);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 9
+            paintLine(color, 2);
+            move(8);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 10
+            paintLine(color, 2);
+            move(8);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 11
+            paintLine(color, 2);
+            move(8);
+            paintLine(color, 1);
+            turnLeft();
+            turnLeft();
+            paintLine(color, 1);
+        home();
+    }
+    public void drawColor1(String color) {
+        moveToStart("1");
+            move(1);
+            paintLine(color, 2);
+            nextLayer(false, color);                //row 1
+            paintLine(color, 3);
+            turnLeft();
+            turnLeft();
+            paintLine(color, 1);
+        home();
+    }
+    public void drawColor2(String color) {
+        moveToStart("2");
+            move(1);
+            paintLine(color, 6);
+            nextLayer(false, color);                //row 1
+            paintLine(color, 2);
+            move(4);
+            paintLine(color, 1);
+            nextLayer(true, color);                //row 2
+            paintLine(color, 1);
+            move(6);
+            nextLayer(true, color);                //row 3
+            paintLine(color, 1);
+            move(6);
+            nextLayer(true, color);                //row 4
+            paintLine(color, 1);
+            move(6);
+            nextLayer(true, color);                //row 5
+            paintLine(color, 7);
+            nextLayer(true, color);                //row 6
+            paintLine(color, 7);
+            nextLayer(true, color);                //row 7
+            paintLine(color, 7);
+            nextLayer(true, color);                //row 8
+            paintLine(color, 7);
+            turnLeft();
+            turnLeft();
+            paintLine(color, 1);
+        home();
+    }
+    public void moveToStart(String part) {
+        int movex = 0, movey = 0;
+        if (part.equals("1")) {
+            movex = 4;
+            movey = 5;
+        } else if (part.equals("2")) {
+            movex = 2;
+            movey = 3;
+        }
+        move(movex);
+        turnRight();
+        move(movey);
+        turnLeft();
+    }
+}
+
+
+

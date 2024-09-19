@@ -31,1144 +31,1257 @@ public class ImagePainter extends PainterPlus {// initialize the ImagePainter cl
 
     public void drawColor0(String color) {
         // no moveToStart function because the initial position is at 0, 0
-            paintLine(color, 10);
-            move(9);
-            paintLine(color, 12);
-            nextLayer(true, color);                //row 1
-            paintLine(color, 12);
-            move(11);
-            paintLine(color, 8);
-            nextLayer(true, color);                //row 2
-            paintLine(color, 8);
-            move(13);
-            paintLine(color, 10);
-            nextLayer(true, color);                //row 3
-            paintLine(color, 10);
-            move(15);
-            paintLine(color, 6);
-            nextLayer(true, color);                //row 4
-            paintLine(color, 6);
-            move(17);
-            paintLine(color, 8);
-            nextLayer(true, color);                //row 5
-            paintLine(color, 9);
-            move(17);
-            paintLine(color, 5);
-            nextLayer(true, color);                //row 6
-            paintLine(color, 5);
-            move(19);
-            paintLine(color, 7);
-            nextLayer(true, color);                //row 7
-            paintLine(color, 8);
-            move(19);
-            paintLine(color, 4);
-            nextLayer(true, color);                //row 8
-            paintLine(color, 5);
-            move(19);
-            paintLine(color, 7);
-            nextLayer(true, color);                //row 9
-            paintLine(color, 8);
-            move(19);
-            paintLine(color, 4);
-            nextLayer(true, color);                //row 10
-            paintLine(color, 3);
-            move(23);
-            paintLine(color, 5);
-            nextLayer(true, color);                //row 11
-            paintLine(color, 6);
-            move(23);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 12
-            paintLine(color, 3);
-            move(23);
-            paintLine(color, 5);
-            nextLayer(true, color);                //row 13
-            paintLine(color, 6);
-            move(23);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 14
-            paintLine(color, 3);
-            move(23);
-            paintLine(color, 5);
-            nextLayer(true, color);                //row 15
-            paintLine(color, 6);
-            move(23);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 16
-            paintLine(color, 2);
-            move(25);
-            paintLine(color, 4);
-            nextLayer(true, color);                //row 17
-            paintLine(color, 4);
-            move(27);
-            nextLayer(true, color);                //row 18
-            move(29);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 19
-            paintLine(color, 3);
-            move(28);
-            nextLayer(false, color);                //row 20
-            move(29);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 21
-            paintLine(color, 5);
-            move(25);
-            paintLine(color, 1);
-            nextLayer(true, color);                //row 22
-            paintLine(color, 2);
-            move(25);
-            paintLine(color, 4);
-            nextLayer(true, color);                //row 23
-            paintLine(color, 5);
-            move(25);
-            paintLine(color, 1);
-            nextLayer(true, color);                //row 24
-            move(29);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 25
-            paintLine(color, 3);
-            move(28);
-            nextLayer(false, color);                //row 26
-            move(29);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 27
-            paintLine(color, 11);
-            move(15);
-            paintLine(color, 5);
-            nextLayer(true, color);                //row 28
-            paintLine(color, 7);
-            move(14);
-            paintLine(color, 10);
-            nextLayer(true, color);                //row 29
-            paintLine(color, 14);
-            move(7);
-            paintLine(color, 10);
-            nextLayer(true, color);                //row 30
-            paintLine(color, 13);
-            move(3);
-            paintLine(color, 15);
-            nextLayer(true, color);                //row 31
-            paintLine(color, 16);
-            move(3);
-            paintLine(color, 12);
+        for (int i = 0; i < 32; i++) {
+            if (i == 0) {
+                paintLine(color, 10);
+                move(9);
+                paintLine(color, 12);
+                nextLayer(true, color);
+            }
+            if (i == 1) {
+                paintLine(color, 12);
+                move(11);
+                paintLine(color, 8);
+                nextLayer(true, color);
+            }
+            if (i == 2) {
+                paintLine(color, 8);
+                move(13);
+                paintLine(color, 10);
+                nextLayer(true, color);
+            }
+            if (i == 3) {
+                paintLine(color, 10);
+                move(15);
+                paintLine(color, 6);
+                nextLayer(true, color);
+            }
+            if (i == 4) {
+                paintLine(color, 6);
+                move(17);
+                paintLine(color, 8);
+                nextLayer(true, color);
+            }
+            if (i == 5) {
+                paintLine(color, 9);
+                move(17);
+                paintLine(color, 5);
+                nextLayer(true, color);
+            }
+            if (i == 6) {
+                paintLine(color, 5);
+                move(19);
+                paintLine(color, 7);
+                nextLayer(true, color);
+            }
+            if (i == 7) {
+                paintLine(color, 8);
+                move(19);
+                paintLine(color, 4);
+                nextLayer(true, color);
+            }
+            if (i == 8) {
+                paintLine(color, 5);
+                move(19);
+                paintLine(color, 7);
+                nextLayer(true, color);
+            }
+            if (i == 9) {
+                paintLine(color, 8);
+                move(19);
+                paintLine(color, 4);
+                nextLayer(true, color);
+            }
+            if (i == 10) {
+                paintLine(color, 3);
+                move(23);
+                paintLine(color, 5);
+                nextLayer(true, color);
+            }
+            if (i == 11) {
+                paintLine(color, 6);
+                move(23);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 12) {
+                paintLine(color, 3);
+                move(23);
+                paintLine(color, 5);
+                nextLayer(true, color);
+            }
+            if (i == 13) {
+                paintLine(color, 6);
+                move(23);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 14) {
+                paintLine(color, 3);
+                move(23);
+                paintLine(color, 5);
+                nextLayer(true, color);
+            }
+            if (i == 15) {
+                paintLine(color, 6);
+                move(23);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 16) {
+                paintLine(color, 2);
+                move(25);
+                paintLine(color, 4);
+                nextLayer(true, color);
+            }
+            if (i == 17) {
+                paintLine(color, 4);
+                move(27);
+                nextLayer(true, color);
+            }
+            if (i == 18) {
+                move(29);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 19) {
+                paintLine(color, 3);
+                move(28);
+                nextLayer(false, color);
+            }
+            if (i == 20) {
+                move(29);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 21) {
+                paintLine(color, 5);
+                move(25);
+                paintLine(color, 1);
+                nextLayer(true, color);
+            }
+            if (i == 22) {
+                paintLine(color, 2);
+                move(25);
+                paintLine(color, 4);
+                nextLayer(true, color);
+            }
+            if (i == 23) {
+                paintLine(color, 5);
+                move(25);
+                paintLine(color, 1);
+                nextLayer(true, color);
+            }
+            if (i == 24) {
+                move(29);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 25) {
+                paintLine(color, 3);
+                move(28);
+                nextLayer(false, color);
+            }
+            if (i == 26) {
+                move(29);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 27) {
+                paintLine(color, 11);
+                move(15);
+                paintLine(color, 5);
+                nextLayer(true, color);
+            }
+            if (i == 28) {
+                paintLine(color, 7);
+                move(14);
+                paintLine(color, 10);
+                nextLayer(true, color);
+            }
+            if (i == 29) {
+                paintLine(color, 14);
+                move(7);
+                paintLine(color, 10);
+                nextLayer(true, color);
+            }
+            if (i == 30) {
+                paintLine(color, 13);
+                move(3);
+                paintLine(color, 15);
+                nextLayer(true, color);
+            }
+            if (i == 31) {
+                paintLine(color, 16);
+                move(3);
+                paintLine(color, 12);
+                turnLeft();
             turnLeft();
-            turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor1(String color) {
         // no moveToStart function because the initial position is at 0, 0
-            move(10);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(9);
-            nextLayer(false, color);                //row 1
-            move(9);
-            paintLine(color, 2);
-            move(7);
-            paintLine(color, 2);
-            move(8);
-            nextLayer(false, color);                //row 2
-            move(8);
-            paintLine(color, 2);
-            move(9);
-            paintLine(color, 2);
-            move(7);
-            nextLayer(false, color);                //row 3
-            move(7);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 4
-            move(6);
-            paintLine(color, 2);
-            move(13);
-            paintLine(color, 2);
-            move(5);
-            nextLayer(false, color);                //row 5
-            move(6);
-            paintLine(color, 2);
-            move(13);
-            paintLine(color, 2);
-            move(5);
-            nextLayer(false, color);                //row 6
-            move(5);
-            paintLine(color, 1);
-            move(17);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 7
-            move(5);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 3);
-            move(7);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 8
-            move(5);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 7);
-            move(5);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 9
-            move(5);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 7);
-            move(5);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 10
-            move(3);
-            paintLine(color, 2);
-            move(5);
-            paintLine(color, 9);
-            move(5);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 11
-            move(3);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            move(4);
-            paintLine(color, 3);
-            move(4);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 12
-            move(3);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            move(4);
-            paintLine(color, 3);
-            move(4);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 13
-            move(3);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 14
-            move(3);
-            paintLine(color, 2);
-            move(4);
-            paintLine(color, 2);
-            move(7);
-            paintLine(color, 2);
-            move(4);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 15
-            move(3);
-            paintLine(color, 2);
-            move(5);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 16
-            move(2);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 9);
-            move(7);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 17
-            move(1);
-            paintLine(color, 1);
-            move(8);
-            paintLine(color, 3);
-            move(3);
-            paintLine(color, 3);
-            move(8);
-            paintLine(color, 1);
-            nextLayer(false, color);                //row 18
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(9);
-            nextLayer(true, color);                //row 19
-            paintLine(color, 1);
-            move(27);
-            nextLayer(true, color);                //row 20
-            paintLine(color, 1);
-            move(27);
-            nextLayer(true, color);                //row 21
-            move(2);
-            paintLine(color, 4);
-            move(17);
-            paintLine(color, 4);
-            move(1);
-            nextLayer(false, color);                //row 22
-            move(2);
-            paintLine(color, 1);
-            move(23);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 23
-            move(2);
-            paintLine(color, 1);
-            move(23);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 24
-            paintLine(color, 1);
-            move(27);
-            nextLayer(true, color);                //row 25
-            paintLine(color, 1);
-            move(27);
-            nextLayer(true, color);                //row 26
-            paintLine(color, 8);
-            move(13);
-            paintLine(color, 7);
-            nextLayer(true, color);                //row 27
-            move(8);
-            paintLine(color, 3);
-            move(7);
-            paintLine(color, 5);
-            move(5);
-            nextLayer(false, color);                //row 28
-            move(7);
-            paintLine(color, 4);
-            move(7);
-            paintLine(color, 3);
-            move(7);
-            nextLayer(false, color);                //row 29
-            move(11);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(10);
-            nextLayer(false, color);                //row 30
-            move(28);
-            nextLayer(false, color);                //row 31
-            move(13);
-            paintLine(color, 3);
-            move(12);
+        for (int i = 0; i < 32; i++) {
+            if (i == 0) {
+                move(10);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(9);
+                nextLayer(false, color);
+            }
+            if (i == 1) {
+                move(9);
+                paintLine(color, 2);
+                move(7);
+                paintLine(color, 2);
+                move(8);
+                nextLayer(false, color);
+            }
+            if (i == 2) {
+                move(8);
+                paintLine(color, 2);
+                move(9);
+                paintLine(color, 2);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 3) {
+                move(7);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 4 || i == 5) {
+                move(6);
+                paintLine(color, 2);
+                move(13);
+                paintLine(color, 2);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 6) {
+                move(5);
+                paintLine(color, 1);
+                move(17);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 7) {
+                move(5);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 3);
+                move(7);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 8 || i == 9) {
+                move(5);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 7);
+                move(5);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 10) {
+                move(3);
+                paintLine(color, 2);
+                move(5);
+                paintLine(color, 9);
+                move(5);
+                paintLine(color, 2);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 11 || i == 12) {
+                move(3);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 1);
+                move(4);
+                paintLine(color, 3);
+                move(4);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 2);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 13) {
+                move(3);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 2);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 14) {
+                move(3);
+                paintLine(color, 2);
+                move(4);
+                paintLine(color, 2);
+                move(7);
+                paintLine(color, 2);
+                move(4);
+                paintLine(color, 2);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 15) {
+                move(3);
+                paintLine(color, 2);
+                move(5);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 2);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 16) {
+                move(2);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 9);
+                move(7);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 17) {
+                move(1);
+                paintLine(color, 1);
+                move(8);
+                paintLine(color, 3);
+                move(3);
+                paintLine(color, 3);
+                move(8);
+                paintLine(color, 1);
+                nextLayer(false, color);
+            }
+            if (i == 18) {
+                paintLine(color, 1);
+                move(9);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(9);
+                nextLayer(true, color);
+            }
+            if (i == 19 || i == 20) {
+                paintLine(color, 1);
+                move(27);
+                nextLayer(true, color);
+            }
+            if (i == 21) {
+                move(2);
+                paintLine(color, 4);
+                move(17);
+                paintLine(color, 4);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 22 || i == 23) {
+                move(2);
+                paintLine(color, 1);
+                move(23);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 24 || i == 25) {
+                paintLine(color, 1);
+                move(27);
+                nextLayer(true, color);
+            }
+            if (i == 26) {
+                paintLine(color, 8);
+                move(13);
+                paintLine(color, 7);
+                nextLayer(true, color);
+            }
+            if (i == 27) {
+                move(8);
+                paintLine(color, 3);
+                move(7);
+                paintLine(color, 5);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 28) {
+                move(7);
+                paintLine(color, 4);
+                move(7);
+                paintLine(color, 3);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 29) {
+                move(11);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(10);
+                nextLayer(false, color);
+            }
+            if (i == 30) {
+                move(28);
+                nextLayer(false, color);
+            }
+            if (i == 31) {
+                move(13);
+                paintLine(color, 3);
+                move(12);
+            }
+        }
         home();
     }
     public void drawColor2(String color) {
         moveToStart("2");
-            move(7);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 1
-            move(7);
-            paintLine(color, 2);
-            move(9);
-            paintLine(color, 2);
-            move(6);
-            nextLayer(false, color);                //row 2
-            move(8);
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(7);
-            nextLayer(false, color);                //row 3
-            move(1);
-            paintLine(color, 1);
-            move(6);
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(6);
-            paintLine(color, 1);
-            nextLayer(false, color);                //row 4
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(7);
-            nextLayer(true, color);                //row 5
-            paintLine(color, 1);
-            move(25);
-            nextLayer(true, color);                //row 6
-            paintLine(color, 1);
-            move(25);
-            nextLayer(true, color);                //row 7
-            move(26);
-            nextLayer(false, color);                //row 8
-            move(26);
-            nextLayer(false, color);                //row 9
-            move(26);
-            nextLayer(false, color);                //row 10
-            paintLine(color, 1);
-            move(25);
-            nextLayer(true, color);                //row 11
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(9);
-            nextLayer(true, color);                //row 12
-            move(10);
-            paintLine(color, 7);
-            move(9);
-            nextLayer(false, color);                //row 13
-            move(26);
-            nextLayer(false, color);                //row 14
-            move(26);
-            nextLayer(false, color);                //row 15
-            move(26);
-            nextLayer(false, color);                //row 16
-            move(12);
-            paintLine(color, 3);
-            move(11);
+        for (int i = 0; i < 17; i++) {
+            if (i == 0) {
+                move(7);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 1) {
+                move(7);
+                paintLine(color, 2);
+                move(9);
+                paintLine(color, 2);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 2) {
+                move(8);
+                paintLine(color, 1);
+                move(9);
+                paintLine(color, 1);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 3) {
+                move(1);
+                paintLine(color, 1);
+                move(6);
+                paintLine(color, 1);
+                move(9);
+                paintLine(color, 1);
+                move(6);
+                paintLine(color, 1);
+                nextLayer(false, color);
+            }
+            if (i == 4) {
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(9);
+                paintLine(color, 1);
+                move(7);
+                nextLayer(true, color);
+            }
+            if (i == 5 || i == 6) {
+                paintLine(color, 1);
+                move(25);
+                nextLayer(true, color);
+            }
+            if (i == 7 || i == 8 || i == 9) {
+                move(26);
+                nextLayer(false, color);
+            }
+            if (i == 10) {
+                paintLine(color, 1);
+                move(25);
+                nextLayer(true, color);
+            }
+            if (i == 11) {
+                paintLine(color, 1);
+                move(9);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(9);
+                nextLayer(true, color);
+            }
+            if (i == 12) {
+                move(10);
+                paintLine(color, 7);
+                move(9);
+                nextLayer(false, color);
+            }
+            if (i == 13 || i == 14 || i == 15) {
+                move(26);
+                nextLayer(false, color);
+            }
+            if (i == 16) {
+                move(12);
+                paintLine(color, 3);
+                move(11);
+            }
+        }
         home();
     }
     public void drawColor3(String color) {
         moveToStart("3");
-            move(8);
-            paintLine(color, 7);
-            move(7);
-            nextLayer(false, color);                //row 1
-            move(8);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(7);
-            nextLayer(false, color);                //row 2
-            move(7);
-            paintLine(color, 3);
-            move(3);
-            paintLine(color, 3);
-            move(6);
-            nextLayer(false, color);                //row 3
-            move(5);
-            paintLine(color, 3);
-            move(7);
-            paintLine(color, 3);
-            move(4);
-            nextLayer(false, color);                //row 4
-            move(5);
-            paintLine(color, 3);
-            move(7);
-            paintLine(color, 3);
-            move(4);
-            nextLayer(false, color);                //row 5
-            move(5);
-            paintLine(color, 2);
-            move(9);
-            paintLine(color, 2);
-            move(4);
-            nextLayer(false, color);                //row 6
-            move(3);
-            paintLine(color, 2);
-            move(13);
-            paintLine(color, 2);
-            move(2);
-            nextLayer(false, color);                //row 7
-            move(3);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 8
-            move(3);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 9
-            move(3);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 10
-            move(2);
-            paintLine(color, 1);
-            move(17);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 11
-            move(2);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 2);
-            move(7);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 12
-            move(2);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 2);
-            move(7);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 13
-            move(2);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 11);
-            move(3);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 14
-            move(2);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 7);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 15
-            move(2);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 7);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 16
-            paintLine(color, 4);
-            move(15);
-            paintLine(color, 3);
-            nextLayer(true, color);                //row 17
-            paintLine(color, 4);
-            move(15);
-            paintLine(color, 3);
-            nextLayer(true, color);                //row 18
-            move(2);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(5);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 19
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 20
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 21
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 22
-            paintLine(color, 3);
-            move(4);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(2);
-            paintLine(color, 4);
-            nextLayer(true, color);                //row 23
-            paintLine(color, 5);
-            move(2);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(4);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 24
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 25
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 26
-            move(5);
-            paintLine(color, 3);
-            move(7);
-            paintLine(color, 3);
-            move(4);
-            nextLayer(false, color);                //row 27
-            move(8);
-            paintLine(color, 7);
-            move(7);
-            nextLayer(false, color);                //row 28
-            move(8);
-            paintLine(color, 7);
-            move(7);
-            nextLayer(false, color);                //row 29
-            move(10);
-            paintLine(color, 3);
-            move(9);
+        for (int i = 0; i < 30; i++) {
+            if (i == 0) {
+                move(8);
+                paintLine(color, 7);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 1) {
+                move(8);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 2) {
+                move(7);
+                paintLine(color, 3);
+                move(3);
+                paintLine(color, 3);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 3 || i == 4) {
+                move(5);
+                paintLine(color, 3);
+                move(7);
+                paintLine(color, 3);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 5) {
+                move(5);
+                paintLine(color, 2);
+                move(9);
+                paintLine(color, 2);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 6) {
+                move(3);
+                paintLine(color, 2);
+                move(13);
+                paintLine(color, 2);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 7 || i == 8 || i == 9) {
+                move(3);
+                paintLine(color, 1);
+                move(15);
+                paintLine(color, 1);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 10) {
+                move(2);
+                paintLine(color, 1);
+                move(17);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 11 || i == 12) {
+                move(2);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 2);
+                move(7);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 13) {
+                move(2);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 11);
+                move(3);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 14 || i == 15) {
+                move(2);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 7);
+                move(5);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 16 || i == 17) {
+                paintLine(color, 4);
+                move(15);
+                paintLine(color, 3);
+                nextLayer(true, color);
+            }
+            if (i == 18) {
+                move(2);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(5);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 19 || i == 20 || i == 21) {
+                move(7);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 22) {
+                paintLine(color, 3);
+                move(4);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(2);
+                paintLine(color, 4);
+                nextLayer(true, color);
+            }
+            if (i == 23) {
+                paintLine(color, 5);
+                move(2);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(4);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 24 || i == 25) {
+                move(7);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 26) {
+                move(5);
+                paintLine(color, 3);
+                move(7);
+                paintLine(color, 3);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 27 || i == 28) {
+                move(8);
+                paintLine(color, 7);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 29) {
+                move(10);
+                paintLine(color, 3);
+                move(9);
+            }
+        }
         home();
     }
     public void drawColor4(String color) {
         moveToStart("4");
-            move(8);
-            paintLine(color, 1);
-            move(2);
-            paintLine(color, 3);
-            move(2);
-            paintLine(color, 1);
-            move(7);
-            nextLayer(false, color);                //row 1
-            move(7);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 3);
-            move(3);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 2
-            move(6);
-            paintLine(color, 1);
-            move(2);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(2);
-            paintLine(color, 1);
-            move(5);
-            nextLayer(false, color);                //row 3
-            move(8);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            nextLayer(false, color);                //row 4
-            move(8);
-            paintLine(color, 1);
-            move(7);
-            paintLine(color, 1);
-            move(7);
-            nextLayer(false, color);                //row 5
-            move(4);
-            paintLine(color, 2);
-            move(13);
-            paintLine(color, 2);
-            move(3);
-            nextLayer(false, color);                //row 6
-            move(4);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(3);
-            nextLayer(false, color);                //row 7
-            move(4);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(3);
-            nextLayer(false, color);                //row 8
-            move(4);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(3);
-            nextLayer(false, color);                //row 9
-            move(4);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(3);
-            nextLayer(false, color);                //row 10
-            move(4);
-            paintLine(color, 1);
-            move(15);
-            paintLine(color, 1);
-            move(3);
-            nextLayer(false, color);                //row 11
-            move(5);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 12
-            move(5);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 3);
-            move(5);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 13
-            move(4);
-            paintLine(color, 2);
-            move(13);
-            paintLine(color, 2);
-            move(3);
-            nextLayer(false, color);                //row 14
-            paintLine(color, 2);
-            move(4);
-            paintLine(color, 2);
-            move(1);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 2);
-            move(5);
-            nextLayer(false, color);                //row 15
-            move(6);
-            paintLine(color, 2);
-            move(1);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 2);
-            move(5);
-            nextLayer(true, color);                //row 16
-            move(4);
-            paintLine(color, 2);
-            move(1);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 2);
-            move(3);
-            nextLayer(false, color);                //row 17
-            move(7);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 2);
-            move(3);
-            nextLayer(false, color);                //row 18
-            move(4);
-            paintLine(color, 2);
-            move(1);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 1);
-            move(5);
-            paintLine(color, 1);
-            move(1);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 19
-            move(6);
-            paintLine(color, 2);
-            move(1);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(1);
-            paintLine(color, 2);
-            move(5);
-            nextLayer(false, color);                //row 20
-            paintLine(color, 3);
-            move(3);
-            paintLine(color, 2);
-            move(9);
-            paintLine(color, 7);
+        for (int i = 0; i < 21; i++) {
+            if (i == 0) {
+                move(8);
+                paintLine(color, 1);
+                move(2);
+                paintLine(color, 3);
+                move(2);
+                paintLine(color, 1);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 1) {
+                move(7);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 3);
+                move(3);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 2) {
+                move(6);
+                paintLine(color, 1);
+                move(2);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(2);
+                paintLine(color, 1);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 3 || i == 4) {
+                move(8);
+                paintLine(color, 1);
+                move(7);
+                paintLine(color, 1);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 5) {
+                move(4);
+                paintLine(color, 2);
+                move(13);
+                paintLine(color, 2);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 6 || i == 7 || i == 8 || i == 9 || i == 10) {
+                move(4);
+                paintLine(color, 1);
+                move(15);
+                paintLine(color, 1);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 11) {
+                move(5);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 12) {
+                move(5);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 3);
+                move(5);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 13) {
+                move(4);
+                paintLine(color, 2);
+                move(13);
+                paintLine(color, 2);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 14) {
+                paintLine(color, 2);
+                move(4);
+                paintLine(color, 2);
+                move(1);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 2);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 15) {
+                move(6);
+                paintLine(color, 2);
+                move(1);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 2);
+                move(5);
+                nextLayer(true, color);
+            }
+            if (i == 16) {
+                move(4);
+                paintLine(color, 2);
+                move(1);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 2);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 17) {
+                move(7);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 2);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 18) {
+                move(4);
+                paintLine(color, 2);
+                move(1);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 1);
+                move(5);
+                paintLine(color, 1);
+                move(1);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 19) {
+                move(6);
+                paintLine(color, 2);
+                move(1);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(1);
+                paintLine(color, 2);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 20) {
+                paintLine(color, 3);
+                move(3);
+                paintLine(color, 2);
+                move(9);
+                paintLine(color, 7);
+                turnLeft();
             turnLeft();
-            turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor5(String color) {
         moveToStart("5");
-            move(6);
-            paintLine(color, 3);
-            move(5);
-            nextLayer(false, color);                //row 1
-            move(6);
-            paintLine(color, 3);
-            move(5);
-            nextLayer(false, color);                //row 2
-            move(4);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(3);
-            nextLayer(false, color);                //row 3
-            move(4);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(3);
-            nextLayer(false, color);                //row 4
-            move(14);
-            nextLayer(false, color);                //row 5
-            move(1);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            nextLayer(false, color);                //row 6
-            paintLine(color, 1);
-            move(13);
-            nextLayer(true, color);                //row 7
-            paintLine(color, 1);
-            move(13);
-            nextLayer(true, color);                //row 8
-            paintLine(color, 1);
-            move(13);
-            nextLayer(true, color);                //row 9
-            move(14);
-            nextLayer(false, color);                //row 10
-            move(14);
-            nextLayer(false, color);                //row 11
-            move(14);
-            nextLayer(false, color);                //row 12
-            move(14);
-            nextLayer(false, color);                //row 13
-            move(14);
-            nextLayer(false, color);                //row 14
-            move(14);
-            nextLayer(false, color);                //row 15
-            move(14);
-            nextLayer(false, color);                //row 16
-            move(14);
-            nextLayer(false, color);                //row 17
-            move(14);
-            nextLayer(false, color);                //row 18
-            move(14);
-            nextLayer(false, color);                //row 19
-            move(14);
-            nextLayer(false, color);                //row 20
-            move(6);
-            paintLine(color, 1);
-            move(7);
+        for (int i = 0; i < 21; i++) {
+            if (i == 0 || i == 1) {
+                move(6);
+                paintLine(color, 3);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 2 || i == 3) {
+                move(4);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 4) {
+                move(14);
+                nextLayer(false, color);
+            }
+            if (i == 5) {
+                move(1);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                nextLayer(false, color);
+            }
+            if (i == 6 || i == 7 || i == 8) {
+                paintLine(color, 1);
+                move(13);
+                nextLayer(true, color);
+            }
+            if (i == 9 || i == 10 || i == 11 || i == 12 || i == 13 || i == 14 || i == 15 || i == 16 || i == 17 || i == 18 || i == 19) {
+                move(14);
+                nextLayer(false, color);
+            }
+            if (i == 20) {
+                move(6);
+                paintLine(color, 1);
+                move(7);
+            }
+        }
         home();
     }
     public void drawColor6(String color) {
         moveToStart("6");
-            nextLayer(true, color);                //row 1
-            turnLeft();
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                nextLayer(true, color);
+            }
+            if (i == 1) {
+                turnLeft();
             turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor7(String color) {
         moveToStart("7");
-            move(11);
-            paintLine(color, 3);
-            move(10);
-            nextLayer(false, color);                //row 1
-            move(11);
-            paintLine(color, 3);
-            move(10);
-            nextLayer(false, color);                //row 2
-            move(9);
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 2);
-            move(8);
-            nextLayer(false, color);                //row 3
-            move(8);
-            paintLine(color, 3);
-            move(3);
-            paintLine(color, 3);
-            move(7);
-            nextLayer(false, color);                //row 4
-            move(7);
-            paintLine(color, 2);
-            move(7);
-            paintLine(color, 2);
-            move(6);
-            nextLayer(false, color);                //row 5
-            move(7);
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 6
-            move(7);
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 7
-            move(7);
-            paintLine(color, 1);
-            move(9);
-            paintLine(color, 1);
-            move(6);
-            nextLayer(false, color);                //row 8
-            move(24);
-            nextLayer(false, color);                //row 9
-            move(24);
-            nextLayer(false, color);                //row 10
-            move(24);
-            nextLayer(false, color);                //row 11
-            move(24);
-            nextLayer(false, color);                //row 12
-            move(24);
-            nextLayer(false, color);                //row 13
-            move(24);
-            nextLayer(false, color);                //row 14
-            move(24);
-            nextLayer(false, color);                //row 15
-            paintLine(color, 1);
-            move(21);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 16
-            move(2);
-            paintLine(color, 1);
-            move(21);
-            nextLayer(true, color);                //row 17
-            paintLine(color, 1);
-            move(21);
-            paintLine(color, 2);
-            nextLayer(false, color);                //row 18
-            move(24);
-            nextLayer(false, color);                //row 19
-            move(24);
-            nextLayer(false, color);                //row 20
-            move(24);
-            nextLayer(false, color);                //row 21
-            move(22);
-            paintLine(color, 2);
-            turnLeft();
+        for (int i = 0; i < 22; i++) {
+            if (i == 0 || i == 1) {
+                move(11);
+                paintLine(color, 3);
+                move(10);
+                nextLayer(false, color);
+            }
+            if (i == 2) {
+                move(9);
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 2);
+                move(8);
+                nextLayer(false, color);
+            }
+            if (i == 3) {
+                move(8);
+                paintLine(color, 3);
+                move(3);
+                paintLine(color, 3);
+                move(7);
+                nextLayer(false, color);
+            }
+            if (i == 4) {
+                move(7);
+                paintLine(color, 2);
+                move(7);
+                paintLine(color, 2);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 5 || i == 6 || i == 7) {
+                move(7);
+                paintLine(color, 1);
+                move(9);
+                paintLine(color, 1);
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 8 || i == 9 || i == 10 || i == 11 || i == 12 || i == 13 || i == 14) {
+                move(24);
+                nextLayer(false, color);
+            }
+            if (i == 15) {
+                paintLine(color, 1);
+                move(21);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 16) {
+                move(2);
+                paintLine(color, 1);
+                move(21);
+                nextLayer(true, color);
+            }
+            if (i == 17) {
+                paintLine(color, 1);
+                move(21);
+                paintLine(color, 2);
+                nextLayer(false, color);
+            }
+            if (i == 18 || i == 19 || i == 20) {
+                move(24);
+                nextLayer(false, color);
+            }
+            if (i == 21) {
+                move(22);
+                paintLine(color, 2);
+                turnLeft();
             turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor8(String color) {
         moveToStart("8");
-            nextLayer(true, color);                //row 1
-            turnLeft();
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                nextLayer(true, color);
+            }
+            if (i == 1) {
+                turnLeft();
             turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor9(String color) {
         moveToStart("9");
-            move(1);
-            nextLayer(true, color);                //row 1
-            move(1);
-            turnLeft();
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                move(1);
+                nextLayer(true, color);
+            }
+            if (i == 1) {
+                move(1);
+                turnLeft();
             turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor10(String color) {
         moveToStart("10");
-            nextLayer(true, color);                //row 1
-            turnLeft();
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                nextLayer(true, color);
+            }
+            if (i == 1) {
+                turnLeft();
             turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor11(String color) {
         moveToStart("11");
-            turnLeft();
+        for (int i = 0; i < 1; i++) {
+            if (i == 0) {
+                turnLeft();
             turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor12(String color) {
         moveToStart("12");
-            move(3);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(5);
-            nextLayer(false, color);                //row 1
-            move(6);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 2
-            move(3);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(5);
-            nextLayer(false, color);                //row 3
-            move(5);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 4
-            move(2);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 5
-            move(5);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 6
-            move(2);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(4);
-            nextLayer(false, color);                //row 7
-            move(5);
-            paintLine(color, 1);
-            move(13);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 8
-            move(3);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(5);
-            nextLayer(false, color);                //row 9
-            move(6);
-            paintLine(color, 1);
-            move(11);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 10
-            move(3);
-            paintLine(color, 1);
-            move(4);
-            paintLine(color, 3);
-            move(4);
-            paintLine(color, 1);
-            move(5);
-            nextLayer(false, color);                //row 11
-            move(1);
-            paintLine(color, 5);
-            move(4);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(4);
-            paintLine(color, 2);
-            nextLayer(true, color);                //row 12
-            paintLine(color, 3);
-            move(4);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(4);
-            paintLine(color, 5);
-            nextLayer(false, color);                //row 13
-            move(6);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 14
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(5);
-            nextLayer(false, color);                //row 15
-            move(6);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(3);
-            paintLine(color, 1);
-            move(2);
-            nextLayer(false, color);                //row 16
-            paintLine(color, 3);
-            move(5);
-            paintLine(color, 3);
-            move(5);
-            paintLine(color, 5);
-            nextLayer(true, color);                //row 17
-            move(11);
-            paintLine(color, 3);
-            move(5);
-            paintLine(color, 2);
+        for (int i = 0; i < 18; i++) {
+            if (i == 0) {
+                move(3);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 1) {
+                move(6);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 2) {
+                move(3);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 3) {
+                move(5);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 4) {
+                move(2);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 5) {
+                move(5);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 6) {
+                move(2);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(4);
+                nextLayer(false, color);
+            }
+            if (i == 7) {
+                move(5);
+                paintLine(color, 1);
+                move(13);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 8) {
+                move(3);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 9) {
+                move(6);
+                paintLine(color, 1);
+                move(11);
+                paintLine(color, 1);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 10) {
+                move(3);
+                paintLine(color, 1);
+                move(4);
+                paintLine(color, 3);
+                move(4);
+                paintLine(color, 1);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 11) {
+                move(1);
+                paintLine(color, 5);
+                move(4);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(4);
+                paintLine(color, 2);
+                nextLayer(true, color);
+            }
+            if (i == 12) {
+                paintLine(color, 3);
+                move(4);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(4);
+                paintLine(color, 5);
+                nextLayer(false, color);
+            }
+            if (i == 13) {
+                move(6);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 14) {
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(5);
+                nextLayer(false, color);
+            }
+            if (i == 15) {
+                move(6);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(3);
+                paintLine(color, 1);
+                move(2);
+                nextLayer(false, color);
+            }
+            if (i == 16) {
+                paintLine(color, 3);
+                move(5);
+                paintLine(color, 3);
+                move(5);
+                paintLine(color, 5);
+                nextLayer(true, color);
+            }
+            if (i == 17) {
+                move(11);
+                paintLine(color, 3);
+                move(5);
+                paintLine(color, 2);
+                turnLeft();
             turnLeft();
-            turnLeft();
             paintLine(color, 1);
+            }
+        }
         home();
     }
     public void drawColor13(String color) {
         moveToStart("13");
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            nextLayer(true, color);                //row 1
-            paintLine(color, 2);
-            move(3);
-            paintLine(color, 1);
-            nextLayer(true, color);                //row 2
-            move(6);
-            nextLayer(false, color);                //row 3
-            move(6);
-            nextLayer(false, color);                //row 4
-            move(6);
-            nextLayer(false, color);                //row 5
-            move(6);
-            nextLayer(false, color);                //row 6
-            move(6);
-            nextLayer(false, color);                //row 7
-            move(6);
-            nextLayer(false, color);                //row 8
-            move(6);
-            nextLayer(false, color);                //row 9
-            move(6);
-            nextLayer(false, color);                //row 10
-            move(4);
-            paintLine(color, 1);
-            move(1);
-            nextLayer(false, color);                //row 11
-            move(2);
-            paintLine(color, 1);
-            move(3);
-            nextLayer(false, color);                //row 12
-            move(2);
-            paintLine(color, 3);
-            move(1);
+        for (int i = 0; i < 13; i++) {
+            if (i == 0 || i == 1) {
+                paintLine(color, 2);
+                move(3);
+                paintLine(color, 1);
+                nextLayer(true, color);
+            }
+            if (i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 7 || i == 8 || i == 9) {
+                move(6);
+                nextLayer(false, color);
+            }
+            if (i == 10) {
+                move(4);
+                paintLine(color, 1);
+                move(1);
+                nextLayer(false, color);
+            }
+            if (i == 11) {
+                move(2);
+                paintLine(color, 1);
+                move(3);
+                nextLayer(false, color);
+            }
+            if (i == 12) {
+                move(2);
+                paintLine(color, 3);
+                move(1);
+            }
+        }
         home();
     }
     public void moveToStart(String part) {
