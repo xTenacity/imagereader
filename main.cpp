@@ -116,48 +116,64 @@ std::vector<std::string> grabHex() {
     return hexcodes;
 }
 // CREATE ONE DRAW FUNCTION AT POS "i"
-void createDraw(const std::vector<std::string>& hexcodes, std::vector<vector2>& beginlist, int i) {
-    //get the top left and bottom right positions of a "rectangle"
-    //this is to make it so we iterate over less
-    vector2 begin; // top left
-    vector2 end; // bottom right
 
-    //Positions stores all of the positions of pixels with the current hex code
+
+void createDraw(const std::vector<std::string>& hexcodes, std::vector<vector2>& beginlist, int i) {
+    vector2 begin; // top left
+    vector2 end;   // bottom right
+
+    // Positions stores all of the positions of pixels with the current hex code
     std::vector<vector2>& positions = colorMap.at(hexcodes[i]);
 
-    //tempx and tempy store all of the x and y values of all positions stored earlier.
+    // tempx and tempy store all of the x and y values of all positions stored earlier.
     std::vector<int> tempx, tempy;
     for (const auto& pos : positions) {
         tempx.push_back(pos.x);
         tempy.push_back(pos.y);
     }
-    //now, we find the top corner by finding the minimum element for both, and bottom corner by finding the maximum element for both
+
+    // Find the top left and bottom right corners (min/max coordinates)
     begin.x = *std::min_element(tempx.begin(), tempx.end());
     begin.y = *std::min_element(tempy.begin(), tempy.end());
     end.x = *std::max_element(tempx.begin(), tempx.end());
     end.y = *std::max_element(tempy.begin(), tempy.end());
-    //push back where the draw command starts
+
+    // Push back where the draw command starts
     beginlist.push_back(begin);
 
-
-    //start typing out the actual function
+    // Start typing out the actual function
     outFile << "    public void drawColor" << i << "(String color) {\n";
-    if (begin.x > 0 && begin.y > 0) {
+    if (begin.x > 0 || begin.y > 0) {
         outFile << "        moveToStart(\"" << i << "\");\n";
     } else {
         outFile << "        // no moveToStart function because the initial position is at 0, 0\n";
     }
 
-
-
-
-
-
-    //height and width of the rectangle are set here
+    // Height and width of the rectangle are set here
     int height = end.y - begin.y + 1;
     int width = end.x - begin.x + 1;
 
-    //for the height of the board
+    std::vector<std::vector<int>> grid(height, std::vector<int>(width, 0));
+
+    // Fill the grid with 1s for the positions of the current color
+    for (const auto& pos : positions) {
+        int grid_x = pos.x - begin.x;
+        int grid_y = pos.y - begin.y;
+        grid[grid_y][grid_x] = 1;
+    }
+    //DEBUG: Print the grid
+    std::cout << "Grid for color #" << hexcodes[i] << ":" << std::endl;
+    for (const auto& row : grid) {
+        for (const auto& cell : row) {
+            std::cout << cell;
+        }
+        std::cout << std::endl;  // New line after each row
+    }
+
+    std::cout << "(" << begin.x << ", " << begin.y << ")" << std::endl;
+    std::cout << grid[0].size() << std::endl;
+
+    // For each row in the height of the rectangle
     for (int j = 0; j < height; j++) {
         std::vector<int> row(width, 0); // Initialize row with all 0
 
@@ -170,7 +186,7 @@ void createDraw(const std::vector<std::string>& hexcodes, std::vector<vector2>& 
                     index = tempx[u] - begin.x;
                 } else {
                     // Right to Left
-                    index = end.x - tempx[u] + begin.x;
+                    index = end.x - tempx[u];
                 }
                 if (index >= 0 && index < width) {
                     row[index] = 1; // Set the position to 1
@@ -182,60 +198,55 @@ void createDraw(const std::vector<std::string>& hexcodes, std::vector<vector2>& 
 
 
 
+
+        
         bool painting = false;
         int counter = 0;
-        for (int u = 0; u < row.size(); u++) {
-            if (row[u] == 1) {
+
+        for (int u = 0; u < row.size()-1; u++) {
+            if (row[u] == 1) { // If we're on a painted tile
                 if (painting) {
-                    counter++;
+                    counter++; // Keep painting
                 } else {
                     painting = true;
                     if (counter > 0) {
-                        outFile << "            move(" << counter - 1 << ");\n";
-                        counter = 1;
+                        outFile << "            move(" << counter << ");\n"; // Move before painting
                     }
+                    counter = 1; // Start counting painted tiles
                 }
-            } else {
+            } else { // If we're on a non-painted tile
                 if (painting) {
                     painting = false;
-                    outFile << "            paintLine(color, " << counter + 1 << ");\n";
-                    counter = 1;
+                    outFile << "            paintLine(color, " << counter << ");\n"; // Paint the line
+                    counter = 1; // Start counting spaces to move
                 } else {
-                    counter++;
+                    if (u < row.size()) {
+                        counter++;
+                    }
                 }
             }
         }
 
-        // Handle the final segment
+        // Handle the final segment in the row
         if (painting) {
-            outFile << "            paintLine(color, " << counter + 1 << ");\n";
+            outFile << "            paintLine(color, " << counter << ");\n";
         } else if (counter > 0) {
             outFile << "            move(" << counter << ");\n";
         }
 
-
-
-
-
-
-
+        // Move to the next row (y-axis), but skip it for the last row
         if (j < height - 1) {
-            outFile << "            nextLayer();                        //hi\n"; // Move to the next row (y-axis)
+            if (row[row.size() - 1]) {
+                outFile << "            nextLayer(true, color);                //row " << j+1 << "\n";
+            } else {
+                outFile << "            nextLayer(false, color);                //row " << j+1 << "\n";
+            }
+        } else if (j == height - 1) {
+            if (row[row.size() - 1]) {
+                outFile << "            turnLeft();\n            turnLeft();\n            paintLine(color, 1);\n";
+            }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     outFile << "        home();\n    }\n";
 }
@@ -254,7 +265,7 @@ void createMoveToStart(const std::vector<vector2>& beginlist) {
     outFile << "        int movex = 0, movey = 0;\n";
     bool first = true;
     for (int i = 0; i < colorMap.size(); i++) {
-        if (beginlist[i].x > 0 && beginlist[i].y > 0) {
+        if (beginlist[i].x > 0 || beginlist[i].y > 0) {
             if (first) {
                 outFile << "        if (part.equals(\"" << i << "\")) {\n";
                 first = false;
@@ -262,7 +273,7 @@ void createMoveToStart(const std::vector<vector2>& beginlist) {
                 outFile << " else if (part.equals(\"" << i << "\")) {\n";
             }
             if (beginlist[i].x > 0) {
-                outFile << "            movex = " << (beginlist[i].x - 1) << ";\n";
+                outFile << "            movex = " << (beginlist[i].x) << ";\n";
             }
             if (beginlist[i].y > 0) {
                 outFile << "            movey = " << beginlist[i].y << ";\n";
@@ -286,7 +297,7 @@ void createImagePainter() {
 
 int main() {
     classname = "ImagePainter";
-    imagefile = "images/amogus.png";
+    imagefile = "images/brimwitchsimple.png";
     output = "output.txt";
     outFile.open(output);
     colorMap = createColorMap();
